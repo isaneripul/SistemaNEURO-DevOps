@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+			  
+<head th:replace="plantilla/template :: head">
+		<meta charset="ISO-8859-1">
+		<title>Clientes Registro</title>	
+</head>
+
+
+<body>								  
+	<header th:replace="plantilla/template :: header"></header>
+	
+	<div class="container">
+
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark text-white" th:text="${titulo}" ></div>
+				<div class="card-header">
+					      
+					<form th:action="@{/views/clientes/save}" th:object="${cliente}" method="post">
+
+					  <div class="form-group col-md-6">	
+						<input type="hidden" th:field="*{idcliente}">  	
+					    <label for="nombre" class="form-label">Nombre</label>
+					    <input type="text" th:field="*{nombre}" size="50" maxlength="50" class="form-control" id="nombre" aria-describedby="nombre" placeholder="Nombre del Cliente">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+					    th:errors="*{nombre}">
+					    </small>
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="apaterno" class="form-label">A. Paterno</label>
+					    <input type="text" th:field="*{apaterno}" size="50" maxlength="50" class="form-control" id="apaterno" aria-describedby="paterno" placeholder="Apellido Paterno">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('apaterno')}"
+					    th:errors="*{apaterno}">
+					    </small>
+
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="amaterno" class="form-label">A. Materno</label>
+					    <input type="text" th:field="*{amaterno}" size="50" maxlength="50" class="form-control" id="amaterno" aria-describedby="materno" placeholder="Apellido Materno">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('amaterno')}"
+					    th:errors="*{amaterno}">
+					    </small>
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="telefono" class="form-label">Teléfono</label>
+					    <input type="text" th:field="*{telefono}" size="10" maxlength="10" class="form-control" id="telefono" aria-describedby="emailHelp" placeholder="No de Teléfono">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}"
+					    th:errors="*{telefono}">
+					    </small>
+					  </div>			  
+
+					  <div class="form-group col-md-6">
+					    <label for="email" class="form-label">Correo Electronico</label>
+					    <input type="text" th:field="*{email}" size="50" maxlength="50" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo Electronico">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+					    th:errors="*{email}">
+					    </small>
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="ciudad" class="form-label">Ciudad</label>
+					    <select th:field="*{ciudad}" class="form-control" id="ciudad" aria-describedby="emailHelp" >
+					    	<option th:each="ciudad:${ciudades}"
+					    		th:value="${ciudad.idciudad}"
+					    		th:text="${ciudad.nomciudad}"
+					    	/>
+					    </select>
+					  </div>
+
+					  <div class="card-footer col-md-6 bg-dark">
+					  	 <button type="submit" class="btn btn-primary" title="Guardar cliente" th:text="#{PacientesForm.Guardar}"></button>
+					  	 <button class="btn btn-success" onclick="goBack()">&laquo;Regresar</button>	  
+					  </div>
+
+					</form>
+				</div>
+
+
+			</div>		
+
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+	<script>
+			function goBack() {
+				window.history.back();
+			}		
+	</script>
+</body>
+</html>

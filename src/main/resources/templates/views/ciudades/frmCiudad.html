@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org">
+				  
+<head th:replace="plantilla/template :: head">
+		<meta charset="ISO-8859-1">
+		<title>Ciudades Registro</title>		
+</head>
+<body>								  
+	<header th:replace="plantilla/template :: header"></header>
+	<div class="container">
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark text-white" th:text="${titulo}" ></div>
+				<div class="card-header">
+					      			   								                       
+					<form th:action="@{/views/ciudades/save}" th:object="${ciudad}" method="post">
+					  <div class="form-group col-md-6">
+						<input type="hidden" th:field="*{idciudad}">                      
+					    <label for="ciudad" class="form-label">Ciudad</label>
+						<input type="text" th:field="*{nomciudad}" class="form-control" id="nomciudad" aria-describedby="nomciudad" placeholder="Ciudad">						  
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('nomciudad')}" th:errors="*{nomciudad}"></small>
+					  </div>
+
+						<div class="form-group col-md-6">
+						  	<label for="id" class="form-label">Fecha</label>
+                            <input type="text" class="form-control" id="inputFecha"
+                                    th:field="*{fecha}" th:value="*{fecha}" name="inputFecha" data-provide="datepicker"
+                                    data-date-format="dd/mm/yyyy" data-date-language="es-PE"
+                                    data-date-autoclose="true" data-date-today-highlight="true"
+                                    data-date-end-date="0d" data-date-orientation="bottom" maxlength="10"/>
+						</div>
+					  <div class="card-footer col-md-6 bg-dark">
+					  	 <button type="submit" class="btn btn-primary" title="Guardar ciudad" th:text="#{PacientesForm.Guardar}"></button>
+					  </div>
+
+					</form>
+				</div>
+			</div>		
+	</div>
+		<script>
+				$("#inputFecha").datepicker( $.datepicker.regional[ "es" ] );				
+		</script>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

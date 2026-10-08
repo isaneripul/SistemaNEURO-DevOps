@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+	<head th:fragment="head">
+		
+		<script th:src="@{/js/jquery-3.6.0.js}" src ="../static/js/jquery-3.6.0.js"></script>
+
+		<!-- Minified Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- Minified JS library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Minified Bootstrap JS -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+		<link th:href="@{/css/style.css}" rel="stylesheet" href="../static/css/style.css">
+
+		<link th:href="@{/css/jquery-ui.min.css}" rel="stylesheet" href="../static/css/jquery-ui.min.css">
+		<link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../static/css/bootstrap.css">	
+
+		<script th:src="@{/js/jquery-ui.min.js}" src="../static/js/jquery-ui.min.js"></script>		 
+		<script th:src="@{/js/datepicker-es.js}" src="../static/js/datepicker-es.js"></script>				
+
+		<script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>	
+		<script th:src="@{/js/js.js}" src="../static/js/js.js"></script>
+
+		<script th:src="@{/js/popper.min.js}" src="../static/js/popper.min.js"></script>
+
+		<meta charset="UTTF-8">
+		<title>SISTEMA DE NEUROLOGIA</title>
+
+	</head>
+	
+	<body>
+
+	<div class="jquery-script-ads">
+		<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-2783044520727903";
+			/* jQuery_demo */
+			google_ad_slot = "2780937993";
+			google_ad_width = 728;
+			google_ad_height = 90;
+			//-->
+		</script>
+		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	</div>		
+
+		<!-- BARRA DE NAVEGACION -->
+		<header th:fragment="header">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">	
+			  <div class="container-fluid">
+			    <a class="navbar-brand" href="#"><strong>Infantil</strong></a>
+			    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+
+				<!-- ENLACE DEL MENU-->
+			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			      <ul class="navbar-nav mr-auto">
+			        <li class="nav-item active"><a class="nav-link active" aria-current="page" th:href="@{/index/inicio}">Inicio
+			        </a>
+			        </li>
+
+				      <li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+				           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Catalogos
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" th:href="@{/views/clientes/}">Clientes</a>
+				          <a class="dropdown-item" th:href="@{/views/ciudades/}">Ciudades</a>
+				          <a class="dropdown-item" th:href="@{/views/estudios/}">Estudios</a>
+
+				          <div class="dropdown-divider"></div>
+				          <a class="dropdown-item" th:href="@{/views/pacientes/}">Pacientes</a>
+				        </div>
+				      </li>
+
+			        <li class="nav-item">
+			          <a class="nav-link" th:href="@{/views/clientes/}">Proceso</a>
+			        </li>
+
+			      </ul>
+			    </div>
+			  </div>
+			 </div>
+			</nav>
+
+			<!-- MENSAJES -->
+			<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+				<label th:text="${success}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+
+			<div class="alert alert-danger alert-dismissable" th:if="${error != null}">
+				<label th:text="${error}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+
+			<div class="alert alert-warning alert-dismissable" th:if="${warning != null}">
+				<label th:text="${warning}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+
+			<div class="alert alert-info alert-dismissable" th:if="${info != null}">
+				<label th:text="${info}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+
+		</header>
+		
+		<!-- CONTENIDO -->
+		</div>
+		<div class="container"> </div>
+		
+		<!-- PIE DE PAGINA -->
+		
+		<footer th:fragment="footer" class="bg-dark text-center text-white fixed-bottom">
+			<div class="container">
+				<p>Copyrigth NEURO &copy; -2026</p>
+			</div>
+		</footer>
+		
+	</body>
+
+</html>

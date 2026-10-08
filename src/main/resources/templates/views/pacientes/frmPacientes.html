@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+			  
+<head th:replace="plantilla/template :: head">
+		<meta charset="ISO-8859-1">
+		<title>Pacientes Registro</title>	
+</head>
+
+
+<body>								  
+	<header th:replace="plantilla/template :: header"></header>
+	
+	<div class="container">
+
+		<div class="card bg-ligth">
+			<div class="card-header bg-dark text-white" th:text="${titulo}" ></div>
+				<div class="card-header">
+					      
+					<form th:action="@{/views/pacientes/save}" th:object="${paciente}" method="post">
+
+					  <div class="form-group col-md-6">	
+						<input type="hidden" th:field="*{idpaciente}">  	
+					    <label for="nombre" class="form-label">Nombre</label>
+					    <input type="text" th:field="*{nombre}" size="50" maxlength="50" class="form-control" id="nombre" aria-describedby="nombre" placeholder="Nombre del Cliente">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+					    th:errors="*{nombre}">
+					    </small>
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="apaterno" class="form-label">A. Paterno</label>
+					    <input type="text" th:field="*{apaterno}" size="50" maxlength="50" class="form-control" id="apaterno" aria-describedby="apaterno" placeholder="Apellido Paterno">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('apaterno')}"
+					    th:errors="*{apaterno}">
+					    </small>
+
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="amaterno" class="form-label">A. Materno</label>
+					    <input type="text" th:field="*{amaterno}" size="50" maxlength="50" class="form-control" id="amaterno" aria-describedby="amaterno" placeholder="Apellido Materno">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('amaterno')}"
+					    th:errors="*{amaterno}">
+					    </small>
+					  </div>
+
+					    <div>
+					        <!-- Opción Masculino -->
+					        <input type="radio" id="generoM" th:field="*{genero}" value="M" />
+					        <label for="generoM">Masculino</label>
+					    </div>
+					    
+					    <div>
+					        <!-- Opción Femenino -->
+					        <input type="radio" id="generoF" th:field="*{genero}" value="F" />
+					        <label for="generoF">Femenino</label>
+					    </div>
+					    
+					  <div class="form-group col-md-6">
+					    <label for="email" class="form-label">Edad</label>
+					    <input type="text" th:field="*{edad}" size="5" maxlength="5" class="form-control" id="edad" aria-describedby="edadlHelp" placeholder="Edad">
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('edad')}"
+					    th:errors="*{edad}">
+					    </small>
+					  </div>
+
+						<div class="form-group col-md-6">
+						  	<label for="id" class="form-label">Fecha Nacimiento</label>
+                            <input type="text" class="form-control" id="inputFecha"
+                                    th:field="*{fhnacimiento}" th:value="*{fhnacimiento}" name="inputFecha" data-provide="datepicker"
+                                    data-date-format="dd/mm/yyyy" data-date-language="es-PE"
+                                    data-date-autoclose="true" data-date-today-highlight="true"
+                                    data-date-end-date="0d" data-date-orientation="bottom" maxlength="10"/>
+						</div>
+
+						<div class="form-group col-md-6">
+						  	<label for="id" class="form-label">Fecha Entrada</label>
+                            <input type="text" class="form-control" id="inputFechaI"
+                                    th:field="*{fhentrada}" th:value="*{fhentrada}" name="inputFechaI" data-provide="datepicker"
+                                    data-date-format="dd/mm/yyyy" data-date-language="es-PE"
+                                    data-date-autoclose="true" data-date-today-highlight="true"
+                                    data-date-end-date="0d" data-date-orientation="bottom" maxlength="10"/>
+						</div>
+
+						<div class="form-group col-md-6">
+						  	<label for="id" class="form-label">Fecha de Alta</label>
+                            <input type="text" class="form-control" id="inputFechaII"
+                                    th:field="*{fhalta}" th:value="*{fhalta}" name="inputFechaII" data-provide="datepicker"
+                                    data-date-format="dd/mm/yyyy" data-date-language="es-PE"
+                                    data-date-autoclose="true" data-date-today-highlight="true"
+                                    data-date-end-date="0d" data-date-orientation="bottom" maxlength="10"/>
+						</div>
+
+					  <div class="card-footer col-md-6 bg-dark">
+					  	 <button type="submit" class="btn btn-primary" title="Guardar paciente" th:text="#{PacientesForm.Guardar}"></button>
+					  	 <button class="btn btn-success" onclick="goBack()">&laquo;Regresar</button>	  
+					  </div>
+					</form>
+				</div>
+
+			</div>		
+	</div>
+		<script>
+				$("#inputFecha").datepicker( $.datepicker.regional[ "es" ] );	
+				$("#inputFechaI").datepicker( $.datepicker.regional[ "es" ] );
+				$("#inputFechaII").datepicker( $.datepicker.regional[ "es" ] );			
+		</script>
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+	<script>
+			function goBack() {
+				window.history.back();
+			}		
+	</script>
+</body>
+</html>
