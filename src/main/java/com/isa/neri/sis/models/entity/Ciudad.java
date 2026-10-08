@@ -18,7 +18,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity      
 @Table(name="ciudades")
 public class Ciudad implements Serializable{
-	// Ciudades
+	// Ciudades 
+	// Entidad
 	private static final long serialVersionUID = 1L;
 	
 	@Id
